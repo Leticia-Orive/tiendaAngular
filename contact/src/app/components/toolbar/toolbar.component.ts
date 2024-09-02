@@ -10,7 +10,7 @@ const MATERIAL_MODULES = [MatToolbarModule, MatIconModule, MatButtonModule];
   standalone: true,
   imports: [MATERIAL_MODULES],
   template: `
-    <mat-toolbar color="primary">
+    <mat-toolbar color="accent">
       <a mat-button routerLink="/">
         <mat-icon>home</mat-icon>
         <span>Home</span>
@@ -19,6 +19,7 @@ const MATERIAL_MODULES = [MatToolbarModule, MatIconModule, MatButtonModule];
         <mat-icon>list_alt</mat-icon>
         <span>Contacts</span>
       </a>
+      <span class="spacer"></span>
       <a mat-button >
         <mat-icon>add_box</mat-icon>
         <span>New</span>
