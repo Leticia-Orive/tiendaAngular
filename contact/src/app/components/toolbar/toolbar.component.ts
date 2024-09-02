@@ -1,13 +1,29 @@
 import { Component } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
+//Creamos un constante de Material Component para poder usarlo en el template
+const MATERIAL_MODULES = [MatToolbarModule, MatIconModule, MatButtonModule];
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [],
+  imports: [MATERIAL_MODULES],
   template: `
-    <p>
-      toolbar works!
-    </p>
+    <mat-toolbar color="primary">
+      <a mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-button routerLink="/contacts">
+        <mat-icon>list_alt</mat-icon>
+        <span>Contacts</span>
+      </a>
+      <a mat-button >
+        <mat-icon>add_box</mat-icon>
+        <span>New</span>
+      </a>
+    </mat-toolbar>
   `,
   styles: ``
 })
