@@ -10,8 +10,27 @@
             @for (column of displayedColumns(); track $index){
             <!-- Position Column -->
             <ng-container [matColumnDef]="column">
+              @if(this.sortableColumns().includes(column)){
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
-                <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+              }@else{
+                <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+              }
+                
+                
+                <td mat-cell *matCellDef="let element"> 
+                  {{element[column]}}
+                  <!--Añadimos este if para que nos salga acciones y solo una vez no en todas las columnas--> 
+                  @if(column === 'action'){
+                    <!--Agregamos dos botones-->
+                    <button mat-icon-button color="primary">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  }
+                </td>
+                
             </ng-container>
             }
           
