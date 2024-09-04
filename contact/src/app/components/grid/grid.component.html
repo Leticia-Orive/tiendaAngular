@@ -1,8 +1,9 @@
-<section>
-    <mat-form-field>
-        <mat-label>Filter</mat-label>
-        <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Filter....">
-    </mat-form-field>
+<section class="mt-1">
+  <!--Chivatillo que nos pone la palabra arriba
+  <pre>
+    {{valueToFilter()}}
+  </pre>-->
+    <app-filter [label]="'Filter...'" [placeholder]="'Search.....'" [(filter)]="valueToFilter"/>
     <div class="mat-elevation-z8">
     
         <table mat-table matSort [dataSource]="dataSource">
