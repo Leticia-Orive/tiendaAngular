@@ -47,9 +47,6 @@ export class GridComponent<T> implements OnInit {
     this.dataSource.sort = this._sort();
     this.dataSource.paginator = this._paginator();
   }
-  applyFilter(event:Event):void{
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+ 
   
 }
