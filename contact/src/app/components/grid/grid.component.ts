@@ -1,4 +1,4 @@
-import { Component, effect, input, OnInit, signal, viewChild } from '@angular/core';
+import { APP_BOOTSTRAP_LISTENER, Component, effect, inject, input, OnInit, signal, viewChild } from '@angular/core';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -7,6 +7,8 @@ import {MatInput} from '@angular/material/input';
 import { FilterComponent } from "./filter/filter.component";
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { APP_CONSTANTS } from '@shared/constants';
+import { ContactService } from '@features/contacts/contact.service';
 
 
 const MATERIAL_MODULES = [MatTableModule, MatSortModule, MatPaginatorModule, MatIconModule, MatButtonModule] ;
@@ -31,6 +33,7 @@ export class GridComponent<T> implements OnInit {
   valueToFilter = signal('');
   private readonly _sort = viewChild.required<MatSort>(MatSort);
   private readonly _paginator = viewChild.required<MatPaginator>(MatPaginator);
+  private readonly _contactSvc = inject(ContactService);
 
   constructor() { 
     effect(() => {
@@ -46,6 +49,14 @@ export class GridComponent<T> implements OnInit {
     this.dataSource.data = this.data();
     this.dataSource.sort = this._sort();
     this.dataSource.paginator = this._paginator();
+  }
+
+  deleteContact(id:string):void{
+    const confirmation = confirm(APP_CONSTANTS.MESSAGES.CONFIRMATION_PROMPT);
+    if(confirmation){
+      //service call to delete contact
+
+    }
   }
  
   
