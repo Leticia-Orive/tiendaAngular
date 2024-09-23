@@ -1,1 +1,15 @@
-<p>contact-form works!</p>
+<h2>{{ isEditMode ? 'Editar Contacto' : 'Añadir Contacto' }}</h2>
+
+<form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" required />
+  </mat-form-field>
+
+  <button mat-button type="submit">{{ isEditMode ? 'Actualizar' : 'Añadir' }}</button>
+</form>

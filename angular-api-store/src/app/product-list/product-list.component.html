@@ -1,1 +1,23 @@
-<p>product-list works!</p>
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Precio</th>
+      <td mat-cell *matCellDef="let product">{{ product.price | currency }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let product">
+        <button mat-button (click)="openDialog(product)">Ver</button>
+        <button mat-button (click)="addToCart(product)">Añadir al Carrito</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['title', 'price', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['title', 'price', 'actions']"></tr>
+  </table>
+  
