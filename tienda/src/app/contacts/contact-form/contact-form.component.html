@@ -1,0 +1,11 @@
+<form (ngSubmit)="saveContact()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="contact.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="contact.email" name="email" required>
+    </mat-form-field>
+    <button mat-button type="submit">Guardar</button>
+  </form>
