@@ -6,6 +6,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Product } from '../interfaces/product.model';
 /**
  * En api.service.ts, importa HttpClient y crea métodos para 
  * obtener, agregar, editar y borrar productos
