@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product.model';
 import { ApiService } from '../../services/api.service';
+import { MaterialModule } from '../../models/materialModule';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [MaterialModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
