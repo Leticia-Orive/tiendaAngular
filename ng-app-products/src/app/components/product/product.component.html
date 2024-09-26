@@ -1,0 +1,34 @@
+<div style="padding: 50px;">
+    <h1 class="text-center">Technology Product!</h1>
+    <table class="table table-hover">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Product</th>
+                <th scope="col">Actions</th> <!-- Added Actions column -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of products; let i = index">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                    <span class="badge bg-success">{{item.price}}</span>
+                </td>
+                <td>
+                    <img width="50" height="50" [src]="item.image" alt="product">
+                </td>
+                <td>
+                    <button mat-button (click)="viewProduct(item.id)">Ver</button>
+                    <button mat-button (click)="editProduct(item.id)">Editar</button>
+                    <button mat-button (click)="deleteProduct(item.id)">Eliminar</button>
+                    <button mat-button (click)="addToCart(item)">Añadir al Carrito</button>
+                </td>
+            </tr>  
+        </tbody>
+    </table>
+</div>
