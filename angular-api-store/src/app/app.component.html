@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <span>Mi Aplicación</span>
  
-  <button mat-button routerLink="/home">Home</button>
+  <button (click)="goToHome()">Home</button>
   <button mat-button routerLink="/products">Productos</button>
   <button mat-button routerLink="/contacts">Contactos</button>
   <span class="spacer"></span>
@@ -9,6 +9,7 @@
   <button mat-button (click)="authService.logout()">Cerrar Sesión</button>
   <button mat-button routerLink="/cart">Carrito</button>
   <button mat-button routerLink="/register">Registro</button>
+  <button (click)="router.navigate(['/login'])">Iniciar Sesión</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

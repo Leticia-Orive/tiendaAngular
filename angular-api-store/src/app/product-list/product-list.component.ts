@@ -5,8 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../services/cart.service';
 import { MatTableModule } from '@angular/material/table';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class ProductListComponent implements OnInit{
   products: any[] = [];
 
-  constructor(private apiService: ApiService, private dialog: MatDialog, private cartService: CartService) {}
+  constructor(private apiService: ApiService, private dialog: MatDialog, private cartService: CartService, private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.apiService.getProducts().subscribe(data => {
@@ -37,5 +38,17 @@ export class ProductListComponent implements OnInit{
    addToCart(product: any) {
     this.cartService.addToCart(product);
     alert('Producto añadido al carrito');
+  }
+  // Editar producto
+  editProduct(product: any): void {
+    this.router.navigate(['/products/edit', product.id]);
+  }
+
+  // Borrar producto
+  deleteProduct(productId: string): void {
+    this.productService.deleteProduct(productId).subscribe(() => {
+      this.products = this.products.filter(product => product.id !== productId);
+      alert('Producto eliminado');
+    });
   }
 }

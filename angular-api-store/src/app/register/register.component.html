@@ -3,13 +3,13 @@
   
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <label for="username">Usuario:</label>
-      <input id="username" formControlName="username" placeholder="Nombre de usuario" />
+      <input id="username" formControlName="username" autocomplete="username" required placeholder="Nombre de usuario" />
       <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
         <p>El nombre de usuario es obligatorio</p>
       </div>
   
       <label for="password">Contraseña:</label>
-      <input id="password" type="password" formControlName="password" placeholder="Contraseña" />
+      <input id="password" type="password" formControlName="password" placeholder="Contraseña" autocomplete="new-password" required />
       <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
         <p>La contraseña es obligatoria y debe tener al menos 6 caracteres</p>
       </div>

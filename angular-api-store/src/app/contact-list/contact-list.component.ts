@@ -3,15 +3,17 @@ import { Router, RouterModule } from '@angular/router';
 import { ContactService } from '../services/contact.service';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { User } from '../models/user.model';
 @Component({
   selector: 'app-contact-list',
   standalone: true,
-  imports: [MatTableModule,RouterModule,HttpClientModule,],
+  imports: [MatTableModule,RouterModule,HttpClientModule,CommonModule],
   templateUrl: './contact-list.component.html',
   styleUrl: './contact-list.component.css'
 })
 export class ContactListComponent implements OnInit{
-  contacts: any[] = [];
+  contacts: User[] = [];
 
   constructor(private contactService: ContactService, private router: Router) {}
 

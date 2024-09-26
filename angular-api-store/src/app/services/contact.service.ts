@@ -1,38 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
+import { of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-
-  private apiUrl = 'https://api-ejemplo.com/contacts'; // Usa la API pública que desees
-
+  private users: User[] = [
+    { id: '1', name: 'Juan Perez', email: 'juan@example.com', role: 'admin' },
+    { id: '2', name: 'Ana Gomez', email: 'ana@example.com', role: 'user' },
+    // Agrega más usuarios
+  ];
+  //private apiUrl = 'https://api-ejemplo.com/contacts'; // Usa la API pública que desees
+  private apiUrl = `${environment.apiUrl}/contacts`;
   constructor(private http: HttpClient) {}
-
-  // Obtener todos los contactos
-  getContacts(): Observable<any> {
-    return this.http.get<any[]>(this.apiUrl);
+   // Obtener lista de contactos
+   getContacts(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
   }
 
-  // Obtener un contacto por ID
-  getContactById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  // Obtener contacto por ID
+  getContactById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 
-  // Añadir un nuevo contacto
-  addContact(contact: any): Observable<any> {
-    return this.http.post(this.apiUrl, contact);
+  // Actualizar contacto
+  updateContact(id: string, contact: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, contact);
   }
 
-  // Editar un contacto
-  updateContact(id: string, contact: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, contact);
+  // Añadir contacto
+  addContact(contact: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, contact);
   }
 
-  // Borrar un contacto
-  deleteContact(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  // Eliminar contacto
+  deleteContact(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

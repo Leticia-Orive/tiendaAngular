@@ -9,12 +9,14 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { AdminGuard } from './auth/admin.guard';
 import { RegisterComponent } from './register/register.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent }, // Ruta de login
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }, // Ruta protegida
     { path: 'products', component: ProductListComponent },
     { path: 'products/:id', component: ProductDetailComponent },
+    { path: 'products/edit/:id', component: ProductFormComponent },
     { path: 'cart', component: CartComponent },
     { path: 'contacts', component: ContactListComponent, canActivate: [AuthGuard] },
     { path: 'contacts/new', component: ContactFormComponent, canActivate: [AdminGuard] },

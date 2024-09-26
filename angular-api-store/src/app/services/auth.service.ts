@@ -9,14 +9,19 @@ export class AuthService {
   private users: { username: string, password: string }[] = []; // Lista de usuarios registrados
   constructor(private router: Router) { }
     // Método para registrar un nuevo usuario
-    register(username: string, password: string): boolean {
-      const userExists = this.users.some(user => user.username === username);
-      if (userExists) {
-        return false; // Usuario ya existe
-      }
-      this.users.push({ username, password }); // Registrar nuevo usuario
-      return true;
+  register(username: string, password: string): boolean {
+    // Verificamos si el usuario ya existe
+    const userExists = this.users.some(user => user.username === username);
+    
+    if (userExists) {
+      return false; // Usuario ya existe, no permitir registro
     }
+
+    // Agregamos el nuevo usuario al array
+    this.users.push({ username, password });
+    
+    return true; // Registro exitoso
+  }
   // Simular login con un rol
   login(username: string, password: string): boolean {
     if (username === 'admin' && password === 'admin') {
