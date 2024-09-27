@@ -12,14 +12,19 @@ import { Router } from '@angular/router'; // Importa Router si quieres redirigir
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent implements OnInit{
-  products: Product[] = [];
-
+  //products: Product[] = [];
+  products: any[] = [];
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiService.getProducts().subscribe((data) => {
+    /*this.apiService.getProducts().subscribe((data) => {
       this.products = data;
-    });
+    });*/
+    this.products = [
+      { name: 'Producto 1', price: 100 },
+      { name: 'Producto 2', price: 200 },
+      { name: 'Producto 3', price: 150 }
+    ];
   }
   viewProduct(id: number): void {
     // Por ejemplo, redirigir a la página de detalles del producto

@@ -22,6 +22,10 @@ export class ApiService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
+   // Método para obtener un producto por ID
+   getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);

@@ -9,4 +9,7 @@ export const routes: Routes = [
   { path: 'add-product', component: ProductAddComponent },
   { path: 'product/:id', component: ProductViewComponent }, // Ruta para ver el producto
   { path: 'edit-product/:id', component: ProductEditComponent }, // Ruta para editar el producto
+  //{ path: 'contacts', component: ContactListComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' }, // Redireccionar a productos por defecto
+  { path: '**', redirectTo: '/products' } // Redireccionar en caso de rutas no encontradas
 ];
